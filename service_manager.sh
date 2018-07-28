@@ -28,6 +28,7 @@ cat <<HELP_TEXT
     -e|--enable 		Shows a menu to enable disabled services.
     -d|--disable 		Shows a menu to disable running services.
     -a|--all 			List all services.
+    -h|--help           Show this help.
 
 HELP_TEXT
 }
