@@ -82,7 +82,7 @@ handle_enabled_services() {
 		echo "${0}: unable to show dead services."
 		exit ${ERROR_CREATING_TEMPORARY_FILES}
 	fi
-	user_option=$(dmenu ${DMENU_OPTIONS} < "${DEAD_SERVICES_FILE}")
+	user_option=$(dmenu ${DMENU_OPTIONS} < "${ENABLED_SERVICES_FILE}")
 	if [[ -z "${user_option}" ]]; then
 		return 0
 	fi
