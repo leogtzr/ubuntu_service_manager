@@ -4,6 +4,8 @@ readonly ERROR_CONFLICTING_OPTIONS=80
 readonly ERROR_CREATING_TEMPORARY_FILES=81
 readonly ERROR_NOT_RUNNING_AS_ROOT=82
 
+readonly DMENU_OPTIONS="-b -l 50 -nb "#100" -nf "#b9c0af" -sb "#000" -sf "#afff2f" -i"
+
 list_all_services() {
 	systemctl --no-pager --full --type service --all | awk '$1 ~ /\.service$/ {print}'
 }
@@ -61,7 +63,7 @@ handle_dead_services() {
 		echo "${0}: unable to show dead services."
 		exit ${ERROR_CREATING_TEMPORARY_FILES}
 	fi
-	user_option=$(dmenu -b -l 50 -nb "#100" -nf "#b9c0af" -sb "#000" -sf "#afff2f" -i < "${DEAD_SERVICES_FILE}")
+	user_option=$(dmenu ${DMENU_OPTIONS} < "${DEAD_SERVICES_FILE}")
 	if [[ -z "${user_option}" ]]; then
 		return 0
 	fi
@@ -80,7 +82,7 @@ handle_enabled_services() {
 		echo "${0}: unable to show dead services."
 		exit ${ERROR_CREATING_TEMPORARY_FILES}
 	fi
-	user_option=$(dmenu -b -l 50 -nb "#100" -nf "#b9c0af" -sb "#000" -sf "#afff2f" -i < "${ENABLED_SERVICES_FILE}")
+	user_option=$(dmenu ${DMENU_OPTIONS} < "${DEAD_SERVICES_FILE}")
 	if [[ -z "${user_option}" ]]; then
 		return 0
 	fi
